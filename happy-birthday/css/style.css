@@ -1,11 +1,17 @@
 /*
  * General Styles
 */
-
+html {
+  font-size: 100% /*16px default*/
+}
 
 body {
-  background: #DDD;
+  background: url('../images/space-background.png');
   font-family: 'Open Sans', arial, sans-serif;
+
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
 }
 
 * {
@@ -21,9 +27,9 @@ body {
 }
 
 p {
-  font-size: 16px;
+  font-size: 1rem;
   line-height: 1.75;
-  margin-bottom: 28px;
+  margin-bottom: 1.5rem;
 }
 
 strong {
@@ -31,9 +37,12 @@ strong {
 }
 
 ul li {
-  list-style: decimal inside;
+  list-style: none;
 }
 
+li {
+  margin: 0 0 40px 0;
+}
 /*
  * Heading Styles
 */
@@ -43,16 +52,16 @@ h1, h2 {
   font-family: 'Lobster', cursive;
   color: #e22f8f;
   text-align: center;
-  margin-bottom: 32px;
+  margin-bottom: 2rem;
 }
 
 h1 {
 
-  font-size: 16px;
+  font-size: 2rem;
 }
 
 h2 {
-  font-size: 32px;
+  font-size: 2rem;
 }
 
 /*STYLES*/
@@ -60,21 +69,69 @@ h2 {
 .container {
   width: 600px;
   margin: 100px auto;
+  background:white;
+  border-radius: 20px;
 }
+
+/*.container section:nth-child(even) {*/
+  /*background: grey;*/ /*this css will auto fill every other section row. im not using it because I used section dividers instead */
 
 .hero img {
   width: 100%;
-  border-radius: 20px 20px 0 0;
+  border-radius: 20px;
 }
 
+.maps iframe {
+    border-radius: 0 0 20px 20px;
+    padding: 16px 0 0 0;
+}
+
+.section-break {
+  border-bottom: solid;
+  border-color: grey;
+  margin-bottom: 16px;
+}
+
+.intro {
+  text-align: justify;
+  padding: 16px 0 0 0;
+  margin: 12px;
+}
+
+.contact {
+  text-align: justify;
+  padding: 16px 0 0 0;
+  margin: 12px;
+}
+
+.party-list  {
+  list-style-type: circle;
+  padding: 0; 
+  margin: 0;
+  align-content: center;
+
+}
+
+.footer {
+  text-align: center;
+  padding-top: 2rem;
+}
+
+.footer p {
+  font-size: .75rem;
+}
 
 /*ASIDE STYLES*/
 
 
 aside.left {
   float: left;
+  padding: 0 16px 0 0;
 }
 
 aside.right {
   float: right;
+  padding: 0 0 0 16px;
 }
+
+/*ID STYLES*/

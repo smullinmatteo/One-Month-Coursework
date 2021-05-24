@@ -1,0 +1,239 @@
+/*
+ * General/Utility Styles
+*/
+
+* {
+  -moz-box-sizing: border-box; /* Firexfox */
+  -webkit-box-sizing: border-box; /* Safari/Chrome/iOS/Android */
+  box-sizing: border-box; /* IE */
+}
+
+body {
+  margin: 0;
+  background: rgb(245, 245, 245);
+  font-family: 'Open Sans', arial, sans-serif;
+  font-size: 0.875rem;
+  color: rgb(86, 90, 92);
+}
+
+.clearfix:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+a {
+  font-weight: bold;
+  color: rgb(255, 89, 95);
+  text-decoration: none;
+}
+
+strong {
+  font-weight: 600;
+}
+
+
+/*
+ * Button styles
+*/
+
+.button {
+  background: rgb(255, 89, 95);
+  color: white;
+  text-decoration: none;
+  display: block;
+  padding: 0.75rem 5rem;
+  border-bottom: 1px solid rgb(227, 25, 29);
+  border-radius: 2px;
+  width: 95%;
+  margin: 0 auto;
+}
+
+
+
+/*SECTION STYLES*/
+/*****************************/
+.header img {
+  align-items: left;
+  border-right: solid;
+  border-color: grey;
+}
+.container {
+  width: 25rem;
+  margin: 0 auto;
+  margin: 100px auto;
+  background:white;
+}
+
+.hero img {
+  width: 100%;
+}
+
+
+.photos img {
+  margin: 1rem 1rem 0 1rem;
+  width: 23rem;
+  border-radius: 16px;
+}
+
+
+.clear {
+  clear: both;
+}
+/*****************************/
+
+
+/*IMAGE STYLES*/
+/*****************************/
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  }
+
+/*****************************/
+
+/*PROFILE*/
+/*****************************/
+.profile img {
+  border-radius: 50%;
+  padding-top: 1rem;
+  padding-bottom: .5rem;
+}
+
+.profile {
+  background: white;
+}
+
+.relationship, .name {
+  text-align: center;
+  color:#909597;
+}
+
+.name {
+  font-weight: bold;
+  padding-bottom: 1rem;
+}
+
+.pet-details {
+  font-size: 1.5rem;
+  color: #666A6C;
+  text-align: center;
+}
+
+address {
+  font-size: 1rem;
+}
+
+.about-pet {
+  text-align: center
+}
+
+.about-pet h3{
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  font-weight: bold;
+}
+
+.about-pet p {
+  text-align: justify;
+  padding-bottom: 1rem;
+}
+/*****************************/
+
+
+
+/*ASIDE STYLES*/
+/*****************************/
+aside {
+  display: block;
+  font-size: 1rem;
+}
+aside img {
+  height: 4rem;
+}
+aside.left {
+  float: left;
+  padding: 0 0 16px 0;
+  width: 33.33%;
+}
+
+aside.right {
+  float: right;
+  padding: 0 0 0 16px;
+}
+
+/*****************************/
+
+/*BOOKING*/
+/*****************************/
+.booking h2 {
+  text-align: center;
+  font-weight: 600;
+  font-size: 1.5rem;
+  margin-bottom: .75rem;
+}
+
+.booking h2 .time {
+ font-size: 1rem;
+}
+/*****************************/
+
+/*MEDIA QUERY FOR UPSIZING TO DESKTOP SCREENS*/
+/*****************************/
+@media only screen and (min-width: 1060px) {
+
+.container {
+ width: 1040px;
+ margin: 0 auto;
+ }
+
+ .column {
+ float: left;
+ }
+
+ .button {
+ width: 275px;
+ margin: auto;
+ }
+
+ .profile h1 {
+ margin-bottom: .75rem;
+ }
+
+ .profile h2 {
+ margin-bottom: .25rem;
+ }
+
+ .profile {
+ width: 660px;
+ border-right: .25rem solid #DCE0E0;
+ }
+
+ .booking {
+ width: 380px;
+ }
+
+ .owner-details {
+ width: 20%;
+ }
+
+ .pet-details {
+ width: 80%;
+ text-align: left;
+ }
+
+ .pet-details .pet-icons {
+ width: inherit;
+ margin-right: 50px;
+ }
+
+ .pet-details .pet-icons img {
+ display: block;
+ margin: 3px auto 3px;
+ }
+
+.photos img {
+  width: 30%;
+}
+/*****************************/
