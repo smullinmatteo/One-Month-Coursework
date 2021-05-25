@@ -125,8 +125,11 @@ address {
   font-size: 1rem;
 }
 
+
+/*ABOUT-PET*/
+/********************************/
 .about-pet {
-  text-align: center
+  text-align: center;
 }
 
 .about-pet h3{
@@ -178,6 +181,59 @@ aside.right {
  font-size: 1rem;
 }
 /*****************************/
+
+/*CARE-FOR-PET*/
+/*****************************/
+.care-for-pet{
+  text-align: center;
+}
+
+.care-for-pet h3{
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  font-weight: bold;
+}
+
+.care-for-pet p {
+  text-align: justify;
+  padding-bottom: 1rem;
+}
+
+.care-for-pet .time {
+ font-size: 1rem;
+ font-weight: bold;
+}
+
+.care-for-pet .strong {
+  font-weight: bold;
+}
+/*****************************/
+
+/*GAMES*/
+/*****************************/
+.games h3{
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+.games p {
+  text-align: justify;
+  padding-bottom: 1rem;
+}
+
+.games .strong {
+  font-weight: bold;
+}
+/*****************************/
+/*PHOTOS*/
+/*****************************/
+.photos .full-display {
+  display: none
+}
+/*****************************/
+
 
 /*MEDIA QUERY FOR UPSIZING TO DESKTOP SCREENS*/
 /*****************************/
@@ -234,6 +290,19 @@ aside.right {
  }
 
 .photos img {
-  width: 30%;
+  width: 30%; 
 }
+
+.photos .partial-display {
+  display: none
+}
+
+.photos .full-display {
+  display: inline
+}
+
+.care-for-pet, .about-pet, .games{
+  text-align: left;
+}
+
 /*****************************/

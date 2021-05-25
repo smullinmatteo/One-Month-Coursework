@@ -2,6 +2,7 @@
 <html>
 <head>
   <title>AirCnC - Rent a Cat or Dog</title>
+  <link rel="stylesheet" href="css/lightbox.css">
   <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/style.css">
   <meta name="description" content="AirC&amp;C is the premiere site renting cute cats and canines">
@@ -63,10 +64,10 @@
 
   	<section class=care-for-pet>
   		<h3>Care</h3>
-  		<p>Diet: Dog Food <br>
-			Favorite Toy: A Frisbee <br>
-			Check in: 8:00 AM or 1:00 PM <br>
-			Check out: 12:00 PM or 5:00 PM</p>
+  		<p>Diet: <span class="strong">Dog Food</span> <br>
+			Favorite Toy: <span class="strong">A Frisbee</span> <br>
+			Check in: <span class="time">8:00 AM</span> or <span class="time">1:00 PM</span> <br>
+			Check out: <span class="time">12:00 PM</span> or <span class="time">5:00 PM</span></p>
   	</section>
 
   	<section class=games>
@@ -77,12 +78,17 @@
   	</section>
 
   	<section class="photos">
-  		<img src="images/dog-1.jpg">
-  		<img src="images/dog-2.jpg">
-  		<img src="images/dog-3.jpg">
+  		<a href="images/dog-1.jpg" data-lightbox="photo-album"><img src="images/dog-1.jpg" class="partial-display"> </a>
+      <a href="images/dog-2.jpg" data-lightbox="photo-album" class="partial-display"></a>
+      <a href="images/dog-3.jpg" data-lightbox="photo-album" class="partial-display"></a>
+
+      <img src="images/dog-1.jpg" class="full-display">
+      <img src="images/dog-2.jpg" class="full-display">
+      <img src="images/dog-3.jpg" class="full-display">
   	</section>
 
   </div>
 
+<script src="js/lightbox-plus-jquery.js"></script>
 </body>
 </html>
