@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+			<meta charset="utf-8">
+			<title>Mr. JavaScript</title>
+	</head>
+	<body>
+
+		<h1>I'm Mr. JavaScript</h1>
+		<a href="#" id="hello">Hi</a>
+		<a href="#" class="howareyou">Hey JavaScript, how ya feeling?</a>
+
+		<script type="text/javascript">
+			var a = document.getElementsByClassName('howareyou');
+			a[0].addEventListener('click',function(){
+				var h1 = document.querySelector("h1");
+				h1.innerHTML = "Im alive!" //innerHTML changes whats inside the HTML variable
+				document.getElementById("hello").innerHTML = "oh no, reset";
+				document.querySelector(".howareyou").style.display = "none";
+				document.getElementById("hello").addEventListener('click',function(){
+					location.reload();
+				})
+			});
+		</script>
+
+	</body>
+</html>

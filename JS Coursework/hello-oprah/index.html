@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Oprah Likes You. And so do other people.</title>
+
+		<style>
+			
+			/* Basic CSS comment */	
+			body {
+				background: #BBB;
+				color: white;
+				width: 960px;
+				margin: 0 auto;
+			}
+
+			h1 {
+				font-size: 80px;
+				color: #333	;
+			}
+
+		</style>
+
+		<script type="text/javascript">
+			var firstname = prompt("What is your name?","your name");
+			var car = new Array("BMW", "Saab", "Maserati");
+			var randomNumber = getRandomIntInclusive(0,(car.length-1));
+			
+			var imgArray = new Array();
+
+			imgArray[0] = new Image();
+			imgArray[0].src = 'images/BMW.jpg';
+
+			imgArray[1] = new Image();
+			imgArray[1].src = 'images/maserati.jpg';
+
+			imgArray[2] = new Image();
+			imgArray[2].src = 'images/saab.jpg';
+
+
+			function getRandomIntInclusive(min, max) {
+  				min = Math.ceil(min);
+  				max = Math.floor(max);
+  				return Math.floor(Math.random() * (max - min + 1) + min); //The maximum is inclusive and the minimum is inclusive
+				}
+
+
+			if (firstname.toLowerCase() === "chris") {
+				document.write("<h1>Hello " + firstname + " you won a " + car[randomNumber] + "</h1>")
+				document.body.appendChild(imgArray[randomNumber]);
+				document.write(car[randomNumber]);
+
+			}
+
+			else if (firstname.toLowerCase() == "chris and bob") {
+				document.write("<h1>Hello " + firstname + " you both won a " + car[randomNumber] + "</h1>")
+				document.body.appendChild(imgArray[randomNumber]); 
+			}
+
+			else {
+				document.write("<h1>Hello " + firstname + "</h1>");
+			}
+			
+		</script>
+
+
+	</head>
+ 	
+	<body>
+
+	</body>
+
+</html>
