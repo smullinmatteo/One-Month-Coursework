@@ -1,5 +1,22 @@
 // STEP 1. SEARCH SOUNDCLOUD
 
+UI = {};
+
+UI.enterPress = function(){
+	document.querySelector(".js-search").addEventListener('keyup', function(event){
+	input = document.querySelector("input").value;
+		if(event.key === 'Enter') {
+		SoundCloudAPI.getTrack(input);
+		};
+	});
+};
+
+UI.submitClick = function(){
+	document.querySelector(".js-submit").addEventListener('click', function(){
+	input = document.querySelector("input").value;
+	SoundCloudAPI.getTrack(input);
+	});
+};
 
 // STEP 2. QUERY SOUNDCLOUD API
 
@@ -10,10 +27,7 @@ SoundCloudAPI.initialize = function() {
 	SC.initialize({
 	  client_id: 'cd9be64eeb32d1741c17cb39e41d254d'
 	});
-
 }
-
-SoundCloudAPI.initialize();
 
 SoundCloudAPI.getTrack = function(inputValue) {
 
@@ -24,10 +38,9 @@ SoundCloudAPI.getTrack = function(inputValue) {
 	  console.log(tracks);
 	  SoundCloudAPI.renderTracks(tracks);
 	});
-
 }
 
-SoundCloudAPI.getTrack("Rilo Kiley");
+//SoundCloudAPI.getTrack(input);
 
 SoundCloudAPI.renderTracks = function(tracks) {
 
@@ -52,7 +65,7 @@ SoundCloudAPI.renderTracks = function(tracks) {
 
 		header = document.createElement('div');
 		header.classList.add('header');
-		header.innerHTML = '<a href ="#" target="_blank">science vs. romance</a>';
+		header.innerHTML = '<a href="' + track.permalink_url +'target="_blank">' + track.title + '</a>';
 
 		//button
 		button =document.createElement('div');
@@ -64,11 +77,15 @@ SoundCloudAPI.renderTracks = function(tracks) {
 		buttonText = document.createElement('span');
 		buttonText.innerHTML = 'Add to Playlist';
 
-// STEP 3. DISPLAY RESULTS AS CARDS
 
+// STEP 3. DISPLAY RESULTS AS CARDS
 		//appendall
 		content.appendChild(header);
 		button.appendChild(buttonText);
+
+		button.addEventListener('click', function(){
+			SoundCloudAPI.getEmbed(track.permalink_url);
+		});
 
 		card.appendChild(imageDiv);
 		card.appendChild(content);
@@ -77,15 +94,37 @@ SoundCloudAPI.renderTracks = function(tracks) {
 		searchResults = document.querySelector('.js-search-results');
 		searchResults.appendChild(card);
 
-
 	});
-
-
 }
-
-
-
-
 
 // STEP 4. ADD SELECTED TO PLAYLIST AND AUTO PLAY
 
+SoundCloudAPI.getEmbed = function(trackURL) {
+	console.log('click');
+	SC.oEmbed(trackURL, {
+  	auto_play: true
+	}).then(function(embed){
+  	console.log('oEmbed response: ', embed);
+
+  	sideBar = document.querySelector('.js-playlist');
+  	box = document.createElement('div');
+  	box.innerHTML = embed.html;
+
+  	sideBar.insertBefore(box, sideBar.firstChild);
+
+  	localStorage.setItem("key", sideBar.innerHTML);
+	});
+};
+
+
+//call object functions
+
+SoundCloudAPI.initialize();
+UI.enterPress();
+UI.submitClick();
+
+//reload stored playlist to sidebar
+
+sideBar=document.querySelector(".js-playlist");
+
+sideBar.innerHTML = localStorage.getItem("key");

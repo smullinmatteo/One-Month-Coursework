@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Arrays</title>
+</head>
+<body>
+	<script type="text/javascript">
+
+	//PUSH - add new elements to the end of an array and returns the new length of the array
+	let sports = ['soccer', 'baseball'];
+	let total = sports.push('football', 'swimming');
+
+	console.log(sports) //will return all four sports
+	console.log(total) //will return the length of the sports array
+
+	//POP - remove the last element of an array
+	const plants = ['broccoli', 'cauliflower', 'cabbage', 'kale', 'tomato'];
+	console.log(plants.pop());
+	// expected output: "tomato"
+	console.log(plants);
+	// expected output: Array ["broccoli", "cauliflower", "cabbage", "kale"]
+	plants.pop();
+	//will output: kale
+	console.log(plants);
+	// expected output: Array ["broccoli", "cauliflower", "cabbage"]
+
+	//REVERSE - reverse the elements of an arry
+	plants.reverse();
+	console.log(plants);
+	//expected output: cabbage, cauliflower, broccoli
+
+
+	</script>
+</body>
+</html>
