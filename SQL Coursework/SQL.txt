@@ -1,0 +1,141 @@
+SELECT * FROM `users`
+SELECT user_login FROM users
+
+SELECT * FROM users LIMIT 1
+-- Will show only the number requested after "LIMIT" 
+
+SELECT * FROM users LIMIT 2 OFFSET 5
+--will show the limit number but skip the first x number established by the offset. Useful for pagination, or # of results shown on a screen before going to next page
+
+SELECT * FROM `users` ORDER BY user_email
+--ORDER BY sorts the table
+
+SELECT * FROM `users` ORDER BY `users`.`user_email` ASC
+--sorts user_email in ascending order. The dot notation specifies the object and child.
+
+SELECT * FROM products WHERE price = 11.99
+--WHERE clause sorts data by an argument. will return products with a price of 11.99
+-- = equality 
+-- <> non-equality 
+-- != non-equality 
+-- < less than 
+-- <= less than or equal 
+-- > greater than 
+-- >= greater than or equal 
+-- !> not greater than 
+-- BETWEEN 
+-- IS NULL 
+-- AND 
+-- OR
+
+SELECT * FROM products WHERE author = "Yuval Noah Harari" AND price >16.00
+-- AND allows stringing arguments to get precise results. OR operates similarly
+
+--LIKE
+SELECT * FROM products WHERE author LIKE "%Miller%"
+--if we do WHERE auther = "Miller", we will return no results because we are over specific. If we use LIKE and the will card % characters we tell mySQL to search for results that are also close or similar. % on the left only will put a wild card on the left side only. Can you give slightly tighter search results.
+
+AGGREGATE FUNCTIONS
+AVG() 
+COUNT()
+MAX()
+MIN()
+SUM()
+
+--example
+SELECT SUM(price*quantity) FROM products
+
+
+
+QUIZ
+
+--find the state drink of Maine
+SELECT * FROM `states` WHERE state = "Maine"
+--returns the row in states for Maine
+
+SELECT COUNT(drink="Milk") FROM `states`
+--returns 29. the number of states where the state drink is milk
+SELECT COUNT(drink) FROM `states` WHERE drink = "Milk"
+--returns 19. The correct number.
+
+SELECT * FROM `states` WHERE drink="Milk"
+--returns all rows where the state drink is Milk
+
+SELECT * FROM `states` ORDER BY year LIMIT 1
+--sorts the list in ascending order by year. then limits search results to 1 row.
+
+
+
+
+
+--UPDATE
+UPDATE states SET drink = "Chocolate Oat Milk" WHERE state = "Delaware"
+--updates the drink for Delaware
+
+--can also write like this
+UPDATE states 
+SET drink = "Chocolate Oat Milk" 
+WHERE state = "Delaware"
+
+
+
+--DELETE
+DELETE FROM states 
+WHERE state = "Florida"
+
+--CRUD
+C — Create
+R — Read
+U — Update
+D — Delete
+
+SQL Datatypes 
+Here are some of the more common datatypes that you'll be using in your database whether it's MYSQL, SQL Server, or Oracle. 
+
+TINYINT(Size)
+A very small integer. Signed range is from -128 to 127. Unsigned range is from 0 to 255. "Size" specifies the maximum display width (which is 255)
+
+INT(Size)
+A medium integer. Signed range is from -2147483648 to 2147483647. Unsigned range is from 0 to 4294967295. "Size" specifies the maximum display width (which is 255).
+
+BIGINT(Size)
+A large integer. Signed range is from -9223372036854775808 to 9223372036854775807. Unsigned range is from 0 to 1844674407370955
+
+VARCHAR(256)
+A VARIABLE length string that can contain letters, numbers, and special characters. The length can be from 0 to 65535
+
+LONGTEXT
+A string with up to 4,294,967,295 characters
+
+DECIMAL(size, d)
+"Size" is the total number of digitals. "d" is the number of digits after the decimal point. The maximum number for size is 65. The maximum number for d is 30. The default value for size is 10. The default value for d is 0. For money, a suitable recommendation is to use DECIMAL(10, 2)
+
+DATETIME
+Used to set the date, Google instructions for more info on this!
+
+TIMESTAMP
+The current timestamp (in UNIX time) when the row was created.
+
+--ALIAS
+SELECT p.post_title, u.user_nicename
+FROM posts AS p
+JOIN users 
+AS u ON u.ID = p.post_author
+-- AS, stands for alias, lets the user shortcut a prefix for faster querying and typing. for example here we set p as shortcut for posts
+
+SELECT p.post_title as "Post Title", u.user_nicename, count(*) as "Total Posts"
+FROM posts AS p
+JOIN users 
+AS u ON u.ID = p.post_author
+
+
+--THIS QUERY RETURNS THE FIRST POST TITLE, AUTHOR NAME, AND TOTAL POSTS BY THAT AUTHOR. ANY_VALUE IS REQUIRED IN THE NEW MYSQL TO WORK AROUND THE GROUPY BY DEFAULT WHICH THROWS AN ERROR IF ANY_VALUE IS ABSENT FROM QUERY.
+SELECT ANY_VALUE(p.post_title), ANY_VALUE(u.user_nicename), count(*) as "Total Posts" FROM posts AS p JOIN users AS u ON u.ID = p.post_author
+
+
+JOIN
+SELECT comments.*, posts.post_content
+FROM comments
+JOIN posts ON comments.post_ID=posts.ID
+
+-- RETURNS A NEW TABLE WITH ALL THE COLUMNS FROM COMMENTS TABLE PLUS THE POST_CONTENT COLUMN FROM THE POSTS TABLE WHERE THE POST ID MATCHES UP BETWEEN THE TWO TABLES
