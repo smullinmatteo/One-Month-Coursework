@@ -139,3 +139,55 @@ FROM comments
 JOIN posts ON comments.post_ID=posts.ID
 
 -- RETURNS A NEW TABLE WITH ALL THE COLUMNS FROM COMMENTS TABLE PLUS THE POST_CONTENT COLUMN FROM THE POSTS TABLE WHERE THE POST ID MATCHES UP BETWEEN THE TWO TABLES
+
+
+--FULL OUTER JOIN
+SELECT posts.post_title, comments.comment_content
+FROM posts 
+LEFT JOIN comments ON posts.ID = comments.post_id
+UNION
+SELECT posts.post_title, comments.comment_content
+FROM posts 
+RIGHT JOIN comments ON posts.ID = comments.post_id
+-- This query is a hack to produce a full outer join where we grab everything on left and right side and unite them. This allows us to see all the posts and their associated comments, and all the comments and their associated posts. So we'll see which posts have zero comments, and which comments are orphaned.
+
+--JOIN - takes two tables and adds columns in the resulting table to blend them together
+--UNION - takes two tables and mashes them together. No blending
+
+
+--UNION example
+SELECT users.user_email
+FROM users
+UNION 
+SELECT comments.comment_author_email
+FROM comments
+--this queries all the emails from users and from comments and combines them into one outputted list. Could use this to spam them all with corporate bullshit.
+
+--GROUP BY
+SELECT posts.post_title, COUNT(comments.ID)  as "# of Comments" 
+FROM posts 
+LEFT JOIN comments ON posts.ID = comments.post_ID
+GROUP BY posts.ID
+--this SQL query selects the posts titles, counts the comments and assigns them a new column title "# of comments" from the posts table. It then joins the comments that were tied to posts and groups them by post ID. The group by is needed since we have unaggregated data. The group by also tells teh count to run the count for each post. not for the sum of all comments. 
+
+--Subquery and IN
+SELECT users.user_email FROM users 
+WHERE id IN (SELECT post_author FROM posts WHERE post_status = "draft")
+--this queries all user emails and then runs a sub query to determine which users have drafted posts. It uses the id from the first query and matches it to the results from the sub query.
+
+--alternate
+SELECT users.user_email 
+FROM users
+JOIN posts ON posts.post_author = users.ID
+WHERE posts.post_status = "draft"
+--can also use JOIN and WHERE to achieve the same end result as the sub query
+
+--IN
+--IN tells the query where to search in a list.
+
+--TRUNCATE and DROP
+--TRUNCATE will delete the rows of any given table, but it keeps the table and headers
+TRUNCATE facebook_users
+--DROP
+DROP TABLE facebook_users
+-- deletes all rows and the entire table from the database.
